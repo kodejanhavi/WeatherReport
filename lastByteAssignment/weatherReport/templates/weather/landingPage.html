@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>landingpage</title>
+</head>
+<body>
+    <div>
+        <section class="section">
+            <div class="container">
+        <hr /><label class="text-justify">Please select name of the city and submit</label>
+
+                <div class="columns">
+                    <div class="column is-offset-4 is-4">
+                        <form action="{% url 'weather_view' %}" method="GET"><input list="browsers" name="name" /><datalist id="browsers">
+                            {% for city in city_list %}
+                                <option value={{ city.cityname }}></option>
+                            {% endfor %}
+                            </datalist><input type="submit" style="margin-left: 10px;" /></form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

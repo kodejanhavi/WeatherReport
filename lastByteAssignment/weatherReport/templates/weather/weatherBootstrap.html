@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    {% load static %}
+	<link rel="stylesheet" href="{%static '/css/weatherCSS.css'%}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.6.95/css/materialdesignicons.css">
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Weather Forecast</title>
+</head>
+<body>
+<div class="page-content page-container" id="page-content">
+
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-lg-8 grid-margin stretch-card">
+                <!--weather card-->
+              <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form  method="GET">
+                        <input list="browsers" name="name" required="required">
+                        <datalist id="browsers">
+                             {% for city in city_list %}
+                             <option value={{ city.cityname }}></option>
+                            {% endfor %}
+                        </datalist>
+                                <input type="submit">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+                <br>
+                <div class="card card-weather">
+                    <div class="card-body">
+                        <div class="weather-date-location">
+                            <h3>{{ city_weather.weekday}}</h3>
+                            <p class="text-gray"> <span class="weather-date">{{ city_weather.daydate}}
+                            <br>{{ city_weather.city}}, {{city_weather.country}}
+                            </span></p>
+
+                        </div>
+                        <div class="weather-data d-flex">
+                            <div class="mr-auto">
+                                <h2 class="display-5">{{ city_weather.temperature}} <span class="symbol">°</span>C</h2>
+                                <p><h5 class="display-5"> {{ city_weather.description}}
+
+                                <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image" width="50" height="50">
+
+                                </h5>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="d-flex weakly-weather">
+                            {% for day in city_weather.daily %}
+                            <div class="weakly-weather-item">
+                                <p class="mb-0"> {{day.weekday}} </p>
+								<p class="mb-0"> {{day.daymonth}} </p>
+						        <img src="http://openweathermap.org/img/w/{{day.icon}}.png" alt="Image">
+                                <p class="mb-0">{{day.daytemp}}° </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!--weather card ends-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
