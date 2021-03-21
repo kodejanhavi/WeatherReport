@@ -1,0 +1,15 @@
+Please follow below steps to be executed on Windows machine after clonning the project
+
+1. Create an environment. Command:- py -m venv env
+2. Activate the environment. Command:- .\env\Scripts\activate
+3. Execute the requirements.txt file. Command:- pip install -r requirements.txt
+4. Update django db setting in settings file. Update your mysql server password and create a database named 'weatherreport' manually in mysql.
+5. Once database is created, migrate the files in your database. Command:- python3 manage.py migrate (location WeatherReport/lastByteAssignment/)
+6. Create an admin manually in admin table of your mysql database.
+7. Now once all above process are completed start the server. Command:- python3 manage.py runserver (location WeatherReport/lastByteAssignment/)
+8. Login to admin page. URL:- http://127.0.0.1:8000/custom_admin/login/
+9. Login with the credentials created in admin table.
+10. Add and Delete new cities whose data you want to be displayed.
+11. Now go to landing page. URL: http://127.0.0.1:8000/
+12. Can see list of the cities in search option here. Select the city and submit, you will be able to see the weather report of that city.
+13. Only admin can add and delete cities.
